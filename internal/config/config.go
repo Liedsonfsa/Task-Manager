@@ -24,9 +24,9 @@ func LoadConfig() Config {
 		ServerAddress: getEnv("SERVER_ADDRESS", ":8080"),
         DBConfig: DBConfig{
             Host:     getEnv("DB_HOST", "localhost"),
-            Port:     getEnvAsInt("DB_PORT", 5432),
-            User:     getEnv("DB_USER", "postgres"),
-            Password: getEnv("DB_PASSWORD", "postgres"),
+            Port:     getEnvAsInt("DB_PORT", 3306),
+            User:     getEnv("DB_USER", "root"),
+            Password: getEnv("DB_PASSWORD", "liedsonfsa"),
             DBName:   getEnv("DB_NAME", "task_manager"),
         },
         JWTSecret: getEnv("JWT_SECRET", "secret"),
