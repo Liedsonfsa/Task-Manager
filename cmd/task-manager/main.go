@@ -5,6 +5,7 @@ import (
 
 	"github.com/Liedsonfsa/Task-Manager/internal/api"
 	"github.com/Liedsonfsa/Task-Manager/internal/config"
+	"github.com/Liedsonfsa/Task-Manager/internal/middleware"
 	"github.com/Liedsonfsa/Task-Manager/internal/repository"
 	"github.com/Liedsonfsa/Task-Manager/internal/service"
 	"github.com/Liedsonfsa/Task-Manager/pkg/database"
@@ -24,6 +25,7 @@ func main() {
 	taskHandler := api.NewTaskHandler(taskService)
 
 	router := api.NewRouter(taskHandler)
+	router.Use(middleware.CORSMiddleware())
 	log.Printf("Starting server on %s", cfg.ServerAddress)
 	if err = router.Run(cfg.ServerAddress); err != nil {
 		log.Fatalf("Failed to start server: %v", err)
